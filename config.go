@@ -19,7 +19,7 @@ func ConfigureColly(site string, maxRoutines, maxDepth int) (*colly.Collector) {
 
 	args := []func(*colly.Collector){
 		colly.AllowedDomains(siteUrl.Hostname()),
-		colly.UserAgent("cdh-fetch/0.1")
+		colly.UserAgent("cdh-fetch/0.1"),
 	}
 
 	if maxDepth > 0 {
