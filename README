@@ -15,4 +15,4 @@ fetch http://my.url
 The program respects two flags `-max-depth` and `-max-routines` to limit the
 depth of links to recurse and the number of goroutines to use, respectively.
 
-The output will be  CSV printed to stdout that you can pipe as you see fit.
+The output will be CSV printed to stdout that you can pipe as you see fit.
