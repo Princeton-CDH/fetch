@@ -1,0 +1,18 @@
+# Installing
+
+If you have `go` installed for your local system, all you need do is:
+
+``go get github.com/Princeton-CDH/fetch``
+
+If your go binary path (`~/go/bin` by default) is on `PATH`, you can then just
+run the program!
+
+# Usage
+
+```
+fetch http://my.url
+```
+The program respects two flags `-max-depth` and `-max-routines` to limit the
+depth of links to recurse and the number of goroutines to use, respectively.
+
+The output will be  CSV printed to stdout that you can pipe as you see fit.
