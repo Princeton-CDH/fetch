@@ -5,14 +5,14 @@ import (
 )
 
 type Url struct {
-	url string
-	sourceUrl string
-	linkCount int
-	statusCode int
-	lastModified string
-	size int
-	contentLength int
-	timestamp string
+	Url string
+	SourceUrl string
+	LinkCount int
+	StatusCode int
+	LastModified string
+	Size int
+	ContentLength int
+	Timestamp string
 }
 
 type Urls struct {

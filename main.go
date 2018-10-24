@@ -52,29 +52,29 @@ func main() {
 		// onHTML)
 		if _, ok := urls.m[urlPath]; ok {
 			url := urls.m[urlPath]
-			url.url = urlPath
-			url.statusCode = r.StatusCode
-			url.lastModified = r.Headers.Get("Last-Modified")
-			url.size = len(r.Body)
+			url.Url = urlPath
+			url.StatusCode = r.StatusCode
+			url.LastModified = r.Headers.Get("Last-Modified")
+			url.Size = len(r.Body)
 			cl, err := strconv.Atoi(r.Headers.Get("Content-Length"))
 			if err == nil {
-				url.contentLength = cl
+				url.ContentLength = cl
 			}
-			url.timestamp = time.Now().UTC().Format(time.RFC1123)
+			url.Timestamp = time.Now().UTC().Format(time.RFC1123)
 		} else {
 			// otherwise initialize it for the first time
 			url := &Url{
-				url: urlPath,
-				sourceUrl: "",
-				linkCount: 1,
-				statusCode: r.StatusCode,
-				lastModified: r.Headers.Get("Last-Modified"),
-				size: len(r.Body),
-				timestamp: time.Now().UTC().Format(time.RFC1123),
+				Url: urlPath,
+				SourceUrl: "",
+				LinkCount: 1,
+				StatusCode: r.StatusCode,
+				LastModified: r.Headers.Get("Last-Modified"),
+				Size: len(r.Body),
+				Timestamp: time.Now().UTC().Format(time.RFC1123),
 			}
 			cl, err := strconv.Atoi(r.Headers.Get("Content-Length"))
 			if err != nil {
-				url.contentLength = cl
+				url.ContentLength = cl
 			}
 			urls.m[urlPath] = url
 		}
@@ -105,13 +105,13 @@ func main() {
 		}
 
 		if _, ok := urls.m[link]; ok {
-			urls.m[link].linkCount += 1
+			urls.m[link].LinkCount += 1
 			urls.Unlock()
 		} else {
 			url := &Url{
-				url: link,
-				sourceUrl: sourceUrl,
-				linkCount: 1,
+				Url: link,
+				SourceUrl: sourceUrl,
+				LinkCount: 1,
 			}
 			urls.m[link] = url
 			urls.Unlock()
